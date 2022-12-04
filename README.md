@@ -3,6 +3,7 @@
 
 # **Rent a Home - A Home Vacation Rental Service**
 ### Link Website: [rent-a-home.up.railway.app](https://rent-a-home.up.railway.app)
+<!-- Note: ngarahin default ke booking dulu biar ga keliatan error -->
 
 **Terserah || RPL - C**
 1. Alin Fathul Ilmi - 1906399972

@@ -20,5 +20,5 @@ import booking.urls as booking
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('agenda/', include(booking)),
+    path('booking/', include(booking)),
 ]
