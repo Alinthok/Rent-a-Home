@@ -2,7 +2,7 @@
 <!-- [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/GB6Eki?referralCode=U5zXSw) -->
 
 # **Rent a Home - A Home Vacation Rental Service**
-### Link Website: [rent-a-home.up.railway.app](https://rent-a-home.up.railway.app)
+### Link Website: [rent-a-home.up.railway.app](https://rent-a-home.up.railway.app/booking)
 <!-- Note: ngarahin default ke booking dulu biar ga keliatan error -->
 
 **Terserah || RPL - C**
