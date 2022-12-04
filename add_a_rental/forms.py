@@ -1,7 +1,7 @@
-from .models import add_rental
+from .models import rental
 from django import forms
 
-class Form(forms.Form):
+class Form(forms.ModelForm):
     class Meta:
-        model = add_rental
+        model = rental
         fields = ("__all__")
