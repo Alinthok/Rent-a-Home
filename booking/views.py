@@ -9,11 +9,11 @@ from .forms import BookingForm
 # @login_required(login_url = '/login')
 def index(request):
     # context = {"user_id": request.user.id}
-    # return render(request, "agenda_main.html", context)
-    return render(request, "homepage/index.html")
+    # return render(request, "booking/index.html", context)
+    return render(request, "booking/index.html")
 
 # @login_required(login_url = '/login')
-def add_booking(request):
+def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -23,4 +23,13 @@ def add_booking(request):
     else: # if a GET (or any other method) we'll create a blank form
         form = BookingForm()
 
-    return render(request, 'form.html', {'form': form})
+    return render(request, 'booking/form.html', {'form': form})
+
+# @login_required(login_url = '/login')
+def delete_booking(request, ID_booking):
+    try:
+        Booking.objects.get(id=ID_booking).delete()
+    except Exception as e:
+        print(e)
+    finally:
+        return redirect("/booking/")
