@@ -6,11 +6,11 @@ from django.forms.widgets import Input, Select, DateInput
 class BookingForm(ModelForm):
     class Meta :
         model = Booking
-        fields = ['rental', 'tanggal_checkin', 'tanggal_checkout', 'keterangan']
+        fields = ['ID_rental', 'ID_guest', 'tanggal_checkin', 'tanggal_checkout']
         widgets = {
             # Contoh nanti nambahin atribut buat styling css : 'judul' : forms.TextInput(attrs={"class": "form-control"}),
-            'rental' : forms.TextInput(),
+            'ID_rental' : forms.TextInput(),
+            'ID_guest' : forms.TextInput(),
             'tanggal_checkin' : forms.DateInput(),
             'tanggal_checkout' : forms.DateInput(),
-            'keterangan' : forms.Textarea(),
         }
