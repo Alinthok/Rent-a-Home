@@ -1,9 +1,19 @@
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% extends 'homepage/base.html' %}
+{% load static %}
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_table }}
-    <input type="submit" value="login">
-</form>
+
+{% block content %}
+<div class="container mx-4">
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        <table>
+            {% csrf_token %}
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="login">
+    </form>
+</div>
+{% endblock content %}
