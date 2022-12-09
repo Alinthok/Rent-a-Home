@@ -48,37 +48,88 @@
             <h4>Comments:</h4>
             {% for rating in ratings %}
             <div class="row">
-                <p><b>{{ rating.user.user.username }}:</b> My Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</p>
-            </div>
-            {% endfor %}
+                <div class="col-10">
+                    <p><b>{{ rating.user.user.username }}:</b> My Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</p>
+                </div>
+                <div class="col-1">
+                    <!-- Button trigger modal -->
+                    <button style="font-size: smaller;" type="button" data-bs-toggle="modal" data-bs-target="#addComment{{ forloop.counter }}">
+                        Reply
+                    </button>
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addComment">
-                Add Rating
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="addComment" tabindex="-1" aria-labelledby="addCommentLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addCommentLabel">Add Rating</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" id="addCommentForm">
-                                {% csrf_token %}
-                                {{ formComment.as_p }}
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" form="addCommentForm" class="btn btn-primary" value="Add">
+                    <!-- Modal -->
+                    <div class="modal fade" id="addComment{{ forloop.counter }}" tabindex="-1" aria-labelledby="addComment{{ forloop.counter }}Label"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addComment{{ forloop.counter }}Label">Add Comment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" id="addComment{{ forloop.counter }}Form">
+                                        <input type="hidden" id="id_context" name="context" value="addComment">
+                                        {% csrf_token %}
+                                        {{ formComment.as_p }}
+                                        <input type="hidden" id="id_rating" name="rating" value="{{ rating.id }}">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <input type="submit" form="addComment{{ forloop.counter }}Form" class="btn btn-primary" value="Add">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                {% if rating.getComments %}
+                    <div class="col-1">reply:</div>
+                {% endif %}
+                <div class="col-10">
+                    {% for comment in rating.getComments %}
+                    <div class="row">
+                        <p><b>{{ comment.user.user.username }}:</b> {{ comment.comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Button trigger modal -->
+            {% if canAdd %}
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRating">
+                Add Rating
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addRating" tabindex="-1" aria-labelledby="addRatingLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addRatingLabel">Add Rating</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="addRatingForm">
+                                {% csrf_token %}
+                                {{ formRating.as_p }}
+                                <input type="hidden" id="id_context" name="context" value="addRating">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" form="addRatingForm" class="btn btn-primary" value="Add">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p style="font-size: small;">Can only add once.</p>
+            {% endif %}
         </div>
     </div>
 </div>

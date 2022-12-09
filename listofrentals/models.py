@@ -38,3 +38,19 @@ class Rating(models.Model):
     comment = models.TextField()
     user = models.ForeignKey(GeneralUser, on_delete=models.CASCADE, null=True)
     rental = models.ForeignKey(Rental, on_delete=models.CASCADE, null=True)   
+
+    def getComments(self):
+        ratingComments = RatingComment.objects.filter(rating=self)
+        return ratingComments
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'rental'], name='unique_user_per_rental'
+            )
+        ]
+
+class RatingComment(models.Model):
+    rating = models.ForeignKey(Rating, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(GeneralUser, on_delete=models.CASCADE, null=True)
+    comment = models.TextField()
