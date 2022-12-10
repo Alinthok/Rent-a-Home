@@ -45,6 +45,29 @@
             <p>{{ rental.description }}</p>
         </div>
         <div class="col">
+            {% if generalUser.role == 'L' %}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                <canvas id="myChart" style="width:100%;max-width:700px;"></canvas>
+                <script type="text/javascript">
+                    new Chart("myChart", {
+                    type: "bar",
+                    data: {
+                        labels: [1, 2, 3, 4, 5],
+                        datasets: [{
+                        data: {{ rental.getRatingsCount }},
+                        }]
+                    },
+                    options: {
+                        legend: {display: false},
+                        title: {
+                        display: true,
+                        text: "Rating distribution"
+                        }
+                    }
+                    });
+                </script>
+            {% endif %}
+            
             <h4>Comments:</h4>
             {% for rating in ratings %}
             <div class="row">

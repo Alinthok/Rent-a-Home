@@ -31,6 +31,7 @@ def details(request, slug):
         'ratings' : ratings,
         'formComment' : formComment,
         'formRating' : formRating,
+        'generalUser' : GeneralUser.objects.get(user=request.user),
         'canAdd' : not Rating.objects.filter(rental=rental, user=GeneralUser.objects.get(user=request.user)).exists()  
     }  
 

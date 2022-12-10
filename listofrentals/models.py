@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from homepage.models import GeneralUser
-from django.db.models import Avg
+from django.db.models import Avg, Count
 
 # Create your models here:
 class Rental(models.Model):
@@ -17,6 +17,13 @@ class Rental(models.Model):
         if rating["avarage"] is not None:
             avg=float(rating["avarage"])
         return avg
+
+    def getRatingsCount(self):
+        rating = Rating.objects.filter(rental=self)
+        r = []
+        for i in range(0, 5):
+            r.append(len(rating.filter(rating=i+1)))
+        return r
 
     def __str__(self):
         return self.rent_name

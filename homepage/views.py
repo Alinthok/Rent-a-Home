@@ -17,7 +17,8 @@ def login_page(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                redirect('/')    
+                return redirect('/') 
+
     else: 
         form = AuthenticationForm()
 
