@@ -107,9 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://rent-a-home.up.railway.app/'
-]
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
