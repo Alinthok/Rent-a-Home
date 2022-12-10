@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add a Rental Form</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+
+  <body>
+    <h1 class="title">Add a Rental Form</h1>
+    <form action = "" method = "POST">
+      {% csrf_token %}
+      {{form}}
+      <input type = "submit" value = "submit">
+    </form>
+  </body>
+</html>
