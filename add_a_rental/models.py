@@ -1,8 +1,10 @@
 from django.db import models
 
 # Create your models here.
+rental_type = (('apartment', 'APARTMENT'), ('home', 'HOME'))
 class rental(models.Model):
     id_rental = models.CharField(max_length=25)
+    rental_type = models.CharField(max_length=10,choices=rental_type, default='home')
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=250)
     city = models.CharField( max_length=75)
