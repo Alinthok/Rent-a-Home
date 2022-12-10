@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'add_a_rental',
+    'homepage',
+    'listofrentals',
     'booking'
 ]
 
@@ -104,6 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://rent-a-home.up.railway.app/'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
