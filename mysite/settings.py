@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'add_a_rental',
-    'list_of_rental'
+    'homepage',
+    'listofrentals',
+    'booking'
 ]
 
 MIDDLEWARE = [
@@ -76,6 +78,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '9rFH18tvdpEegSK5uKL3',
+        'HOST': 'containers-us-west-128.railway.app',
+        'PORT': '5662',
+    }
 }
 
 
@@ -97,6 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://rent-a-home.up.railway.app/'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
