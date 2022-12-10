@@ -10,7 +10,7 @@ class Booking(models.Model):
     ID_guest = models.CharField(max_length=50)
     tanggal_checkin = models.DateField(blank=True, null=True, default=datetime.date.today)
     tanggal_checkout = models.DateField(blank=True, null=True, default=datetime.date.today)
-    harga = models.IntegerField(max_length=20)
+    harga = models.IntegerField()
 
     def __str__(self):
         return str(self.ID_booking)

@@ -5,6 +5,7 @@ app_name = "booking"
 
 urlpatterns = [
     path('', index, name='index'),
-    path('form', create_booking, name='form'),
+    path('get', get_booking, name='get'),
+    path('create', create_booking, name='create'),
     path('delete/<str:ID_booking>', delete_booking, name='delete'),
 ]

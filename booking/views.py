@@ -2,15 +2,23 @@ from django.http import response
 from django.shortcuts import redirect, render
 from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 from .models import Booking
 from .forms import BookingForm
 
 # Create your views here.
+
 # @login_required(login_url = '/login')
 def index(request):
     # context = {"user_id": request.user.id}
     # return render(request, "booking/index.html", context)
     return render(request, "booking/index.html")
+
+# @login_required(login_url = '/login')
+def get_booking(request):
+    bookings = Booking.objects.all()
+    bookings_json = serializers.serialize("json", bookings)
+    return HttpResponse(bookings_json, content_type="application/json")
 
 # @login_required(login_url = '/login')
 def create_booking(request):

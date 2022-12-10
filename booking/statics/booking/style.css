@@ -1,0 +1,47 @@
+.container-dim {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+}
+
+.wadah-card {
+    margin: 4px;
+    padding: 8px;
+}
+
+body {
+    background-color: #E2E8F0;
+}
+
+label {
+    font-weight: 700;
+}
+  
+.masthead {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+#tulisan {
+    margin-left: 20px;
+}
+
+#masuk {
+    margin-top: 24px;
+    margin-left: 20px;
+}
+
+.text-dim {
+    height: 100px;
+}
+
+.tombol{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
